@@ -2,7 +2,7 @@ locals {
   ami_id = data.aws_ami.joindevops.id
   common_name_suffix = "${var.project_name}-${var.environment}"
   vpc_id = data.aws_ssm_parameter.vpc_id.value
-  sg_id = data.aws_ssm_parameter.sg_id
+  sg_id = data.aws_ssm_parameter.sg_id.value
   tg_port = "${var.component}" == "frontend" ? 80 : 8080
   health_check_path = "${var.component}" == "frontend" ? "/" : "/health"
   private_subnet_id = split("," , data.aws_ssm_parameter.private_subnet_ids.value)[0]
